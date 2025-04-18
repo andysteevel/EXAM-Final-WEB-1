@@ -100,13 +100,14 @@ const updateWord = (event) => {
 // Highlight the current word in red
 const highlightNextWord = () => {
     const wordElements = wordDisplay.children;
-
-    if (currentWordIndex < wordElements.length) {
-        if (currentWordIndex > 0) {
-            wordElements[currentWordIndex - 1].style.color = "black";
+    
+    // Ne réinitialise pas la couleur des mots incorrects
+    Array.from(wordElements).forEach((el, index) => {
+        if (!incorrectWordsIndices.includes(index)) {
+            el.style.color = index === currentWordIndex ? "red" : "black";
         }
-        wordElements[currentWordIndex].style.color = "red";
-    }
+    });
+    
 };
 
 // Event listeners
@@ -115,6 +116,23 @@ inputField.addEventListener("keydown", (event) => {
     startTimer();
     updateWord(event);
 });
+
+inputField.addEventListener("input", () => {
+    const currentWord = wordsToType[currentWordIndex];
+    const typedWord = inputField.value;
+    const wordElement = wordDisplay.children[currentWordIndex];
+    
+    if (!incorrectWordsIndices.includes(currentWordIndex)) {
+        wordElement.style.color = typedWord === currentWord.slice(0, typedWord.length) ? "red" : "darkred";
+    }
+});
+
+document.getElementById('restart-button').addEventListener('click', () => {
+    inputField.disabled = false;
+    startTest();
+    inputField.focus();
+});
+
 modeSelect.addEventListener("change", () => startTest());
 
 // Start the test
