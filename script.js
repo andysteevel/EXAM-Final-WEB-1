@@ -61,28 +61,38 @@ const startTimer = () => {
 
 // Calculate and return WPM & accuracy
 const getCurrentStats = () => {
-    const elapsedTime = (Date.now() - previousEndTime) / 1000; // Seconds
-    const wpm = (wordsToType[currentWordIndex].length / 5) / (elapsedTime / 60); // 5 chars = 1 word
-    const accuracy = (wordsToType[currentWordIndex].length / inputField.value.length) * 100;
-
+    const elapsedTime = (Date.now() - startTime) / 6000; // Seconds
+    const correctCount = currentWordIndex - incorrectWordsIndices.length;
+    const wpm = (correctCount * 5) / elapsedTime; // 5 chars = 1 word    
     return { wpm: wpm.toFixed(2), accuracy: accuracy.toFixed(2) };
 };
 
 // Move to the next word and update stats only on spacebar press
 const updateWord = (event) => {
     if (event.key === " ") { // Check if spacebar is pressed
-        if (inputField.value.trim() === wordsToType[currentWordIndex]) {
+
+        const typedWord = inputField.value.trim();
+        const currentWord = wordsToType[currentWordIndex];  
+
+        if (typedWord === currentWord) {
             if (!previousEndTime) previousEndTime = startTime;
+        } else {
+            wordDisplay.children[currentWordIndex].style.color = "red";
+            incorrectWordsIndices.push(currentWordIndex);
+            accuracy = Math.max(0, accuracy - 2);
+            accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
+        }
 
-            const { wpm, accuracy } = getCurrentStats();
-            results.textContent = `WPM: ${wpm}, Accuracy: ${accuracy}%`;
-
-            currentWordIndex++;
-            previousEndTime = Date.now();
+        currentWordIndex++;
+        
+        if (currentWordIndex < wordsToType.length) {
             highlightNextWord();
-
-            inputField.value = ""; // Clear input field after space
-            event.preventDefault(); // Prevent adding extra spaces
+            inputField.value = "";
+            event.preventDefault();
+        } else {
+            const { wpm } = getCurrentStats();
+            results.textContent = `Test completed! WPM: ${wpm}, Final Accuracy: ${accuracy}%`;
+            inputField.disabled = true;
         }
     }
 };
