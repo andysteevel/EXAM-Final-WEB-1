@@ -15,6 +15,7 @@ const modeSelect = document.getElementById("mode");
 const wordDisplay = document.getElementById("word-display");
 const inputField = document.getElementById("input-field");
 const results = document.getElementById("results");
+const accuracyDisplay = document.getElementById("accuracy-display");
 
 const words = {
     easy: ["apple", "banana", "grape", "orange", "cherry"],
