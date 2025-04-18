@@ -8,6 +8,8 @@
 let startTime = null, previousEndTime = null;
 let currentWordIndex = 0;
 const wordsToType = [];
+let accuracy = 100;
+let incorrectWordsIndices = [];
 
 const modeSelect = document.getElementById("mode");
 const wordDisplay = document.getElementById("word-display");
