@@ -35,6 +35,9 @@ const startTest = (wordCount = 50) => {
     currentWordIndex = 0;
     startTime = null;
     previousEndTime = null;
+    accuracy = 100;
+    incorrectWordsIndices = [];
+    accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
 
     for (let i = 0; i < wordCount; i++) {
         wordsToType.push(getRandomWord(modeSelect.value));
