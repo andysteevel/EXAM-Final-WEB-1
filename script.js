@@ -37,6 +37,7 @@ const startTest = (wordCount = 50) => {
     startTime = null;
     previousEndTime = null;
     accuracy = 100;
+    document.getElementById('results').classList.add('hidden');
     incorrectWordsIndices = [];
     accuracyDisplay.textContent = `Accuracy: ${accuracy}%`;
 
@@ -92,7 +93,9 @@ const updateWord = (event) => {
             event.preventDefault();
         } else {
             const { wpm } = getCurrentStats();
-            results.textContent = `Test completed! WPM: ${wpm}, Final Accuracy: ${accuracy}%`;
+            const resultsDiv = document.getElementById('results');
+resultsDiv.textContent = `Test completed! WPM: ${wpm}, Final Accuracy: ${accuracy}%`;
+resultsDiv.classList.remove('hidden');
             inputField.disabled = true;
         }
     }
@@ -130,6 +133,7 @@ inputField.addEventListener("input", () => {
 
 document.getElementById('restart-button').addEventListener('click', () => {
     inputField.disabled = false;
+    document.getElementById('results').classList.add('hidden');
     startTest();
     inputField.focus();
 });
