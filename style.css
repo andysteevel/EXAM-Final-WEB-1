@@ -1,0 +1,111 @@
+:root{
+    --primary-color: #fde9ac;
+    --secondary-color: #63431c;
+    --background: #faeac9;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: var(--background);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#home{
+    position: relative;
+}
+#home::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('Vanille.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    opacity: 0.7;
+    z-index: -1;
+}
+#home > *{
+    position: relative;
+    z-index: 1;
+}
+header{
+    background-color: var(--primary-color);
+}
+h1{
+    color: var(--secondary-color);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+h2{
+    color: var(--secondary-color);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .10em solid var(--secondary-color);
+    animation: typing 3s steps(36, end), curseur 3.2s step-end forwards;
+}
+@keyframes typing {
+    from{ width: 0}
+    to { width: 80%}
+}
+@keyframes curseur {
+    to { border-color: transparent}
+}
+h3{
+    color: var(--background);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+button{
+    border-color: var(--seccondary-color);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    transition: 0.3s;
+}
+button:hover{
+    transform: scale(0.8);
+}
+select{
+    border: solid 2px var(--secondary-color);
+    color: #63431c;
+    background-color: var(--primary-color);
+    outline: transparent;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10vh;
+}
+
+.texte{
+    border-color: var(--secondary-color);
+    background-color: var(--primary-color);
+}
+#start{
+    border-color: var(--secondary-color);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    animation: pulsation 1s infinite alternate;
+}
+@keyframes pulsation{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.2);
+    }
+}
+.theme{
+    border-color: var(--secondary-color);
+    background-color: var(--primary-color);
+    gap: 0;
+}
+#word-display{
+    color: var(--secondary-color);
+}
+.inputContainer{
+    border-color: var(--secondary-color);
+}

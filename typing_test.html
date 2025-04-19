@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Test</title>
+    <link rel="stylesheet" href="output.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+</head>
+
+<body>
+            <header class="font-bold flex justify-between items-center px-5 shadow-gray-500 shadow">
+                <img src="logo.png" alt="" class="w-16">
+                <h1 class="text-2xl ">VANILLA TYPING</h1>
+                <button class="border-2 rounded-3xl" id="exit">
+                    <a href="start.html">
+                        <h3 class="m-2 mx-5">
+                        EXIT
+                        </h3>
+                    </a>  
+                </button>
+            </header>
+            <div class="px-10 flex justify-between items-center">
+                <select id="mode" class="px-5 py-2 rounded-3xl font-bold text-xl items-center">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            <main class="text-xl font-bold px-25 mt-10">
+                <div class="texte border-dashed border-4 p-7 rounded-3xl">
+                    <p id="word-display"></p>
+                </div>
+                <div class="resultat">
+                    <div class="inputContainer flex justify-around border-b-4 px-5 py-1 ">
+                        <input type="text" name="" id="input-field" class="outline-none w-41">
+                    </div>
+                    <div class="pt-2">
+                        <div id="accuracy-display" style="margin-top: 10px;">Accuracy: 100%</div>
+                    </div>
+                </div>
+                <button class="border-2 rounded-3xl py-2 px-5" id="restart-button">Recommencer le test</button>
+            </main>
+    <script src="script.js"></script>
+</body>
+</html>
